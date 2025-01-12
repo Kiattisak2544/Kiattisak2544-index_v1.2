@@ -1,0 +1,125 @@
+@import url('https://fonts.googleapis.com/css2?family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@100..900&display=swap');
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+.btn-register{
+    font-family: "Noto Sans Thai", sans-serif!important;
+    font-size: 18px!important;
+    font-weight: 500!important;
+}
+.btn-login{
+    font-size: 18px!important;
+    transition: ease-in (5s);
+}
+.btn-login:hover{
+    transition: ease-in(5s);
+    font-size: 18px!important;
+    font-weight: 1000;
+}
+.link{
+     font-family: "Noto Sans Thai", sans-serif!important;
+    text-decoration: none!important;
+    font-size: 20px;
+}
+.headders-1{
+    font-family: "Noto Sans Thai", sans-serif!important;
+    font-size: 16px;
+}
+.text-header{
+    font-family: "Noto Sans Thai", sans-serif!important;
+    font-size: 1rem;
+    font-size: 20px;
+}
+.bg-color{
+    background-color: rgba(243, 243, 243, 0.692);
+}
+.text-head_web{
+  font-family: "Noto Sans Thai", sans-serif!important;
+  
+}
+
+.btn:hover{
+    font-family: "PT Sans", sans-serif;
+}
+.nav-link {
+    font-family: "Noto Sans Thai", sans-serif!important;
+    color: rgb(131, 128, 128)!important;
+    font-weight: 1000;
+}
+.nav-link:hover{
+    color: rgb(57, 57, 57)!important;
+    font-size: 18px;
+    transition: all 0.5s;
+
+}
+.link-active{
+    color: rgb(87, 87, 87)!important;
+    font-size: 18px!important;
+    transform: all 0.5s;
+}
+
+.active{
+    color: rgb(253, 252, 252)!important;
+    font-size: 18px!important;
+    transform: all 0.5s;
+}
+
+.card{
+    width: 450px;
+}
+.dropdown-content{
+    display: none;
+    position: absolute;
+    width: 220px;
+    background-color:#ededed;
+    border-radius: 10px;
+    z-index: 1;
+}
+.dropdown-content a{
+    color: black;
+    font-size: 16px;
+    padding: 12px 16px;
+    text-decoration: none;
+    list-style: none;
+    display: block;
+    margin-left: 1rem;
+
+    &:hover{
+        color: #535353;
+        font-weight: 1000;
+    
+    }
+
+}
+
+.dropdown:hover .dropdown-content {display: block; font-size: 16px!important;}
+            
+
+
+.dropdown:hover .dropbtn {background-color: transparent;}
+.img-logo{
+    width: 130px;
+}
+.navbar .navbar-logo{
+    
+    height: 4em;
+    display: flex;
+}
+@media screen and (max-width:550px){
+    .card{
+       width: 350px!important;
+    }
+    .img-logo{
+        width: 100px;
+    }
+}
+@media screen and (max-width:540px){
+    .position-sm-absolute{
+        position: absolute!important;
+        top: 4rem;
+        right: 0;
+    }
+}
