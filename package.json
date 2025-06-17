@@ -8,8 +8,19 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "description": "",
+  "description": "\"# system_repair\"",
   "dependencies": {
-    "bootstrap": "^5.3.3"
-  }
+    "bootstrap": "^5.3.3",
+    "chart.js": "^4.4.8",
+    "express": "^4.21.2",
+    "thai-data": "^2.0.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Kiattisak2544/index_v1.2.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Kiattisak2544/index_v1.2/issues"
+  },
+  "homepage": "https://github.com/Kiattisak2544/index_v1.2#readme"
 }

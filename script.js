@@ -1,4 +1,31 @@
 $(document).ready(function () {
+
+
+    function check_data() {
+        const firstname = $("#firstname").val();
+        const lastname = $("#lastname").val();
+        const telnumber = $("#telnumber").val();
+        const district = $("#district").val();
+        const amphoe = $("#amphoe").val();
+        const province = $("#province").val();
+        const zipcode = $("#zipcode").val();
+
+       if (firstname == "" || lastname == "" || brand == "" || telnumber == "" || district == "" || amphoe == "" || province == "" || zipcode == "") {
+            $("#response")
+                .removeClass("alert-success")
+                .addClass("alert-danger")
+                .text("กรุณากรอกข้อมูลให้ครบถ้วน")
+                .show();
+        }else{
+            $("#response")
+                .removeClass("alert-danger")
+                .addClass("alert-success")
+                .text("กรอกข้อมูลสำเร็จ")
+                .show();
+        }
+    }
+     
+   
     // check charactoers
     function hasSpecialCharacters(str) {
         const regex = /['[!@#$%^&*()=+-,.?":{}|<>_/']/g; // Removed unnecessary `/` and fixed the dash placement
@@ -165,6 +192,40 @@ $(document).ready(function () {
         }
     }
 
+    $('#username').keyup(function () {
+        const username = $(this).val();
+
+        if (username == "") {
+            console.log('ไม่มีข้อมูล')
+        } else {
+            $.ajax({
+                url: "/index_v1.2/api/check_username.php",
+                type: "POST",
+                data: JSON.stringify({ username: username }),
+                contentType: "application/json",
+                success: function (res) {
+                    if (res.success == true) {
+                        $('#username_alert')
+                            .removeClass('text-danger')
+                            .addClass('text-success')
+                            .text(res.message).show();
+                        $("#username").addClass("border border-3 border-success");
+                        $("#username").removeClass("border border-3 border-danger");
+                    } else {
+                        $('#username_alert')
+                            .removeClass('text-success')
+                            .addClass('text-danger')
+                            .text(res.message).show();
+                           
+                        $("#username").addClass("border border-3 border-danger");
+                        $("#username").removeClass("border border-3 border-success");
+                    }
+                }
+
+            });
+        }
+    });
+
     $("#confirm_password").on("keyup", function () {
         const password = $("#password").val();
         const confirm_password = $(this).val();
@@ -204,10 +265,8 @@ $(document).ready(function () {
         const confirm_password = $("#confirm_password").val();
         const message_password = check_password(password);
 
-        if (
-            message_password.class === "text-danger" &&
-            password !== confirm_password
-        ) {
+        if (message_password.class === "text-danger" && password !== confirm_password) 
+        {
             e.preventDefault();
             $("#alert-password")
                 .addClass("text-danger")
@@ -258,6 +317,8 @@ $(document).ready(function () {
             },
         });
     });
+
+    // end register
 });
 // Page ปัจจุบัน
 var page = 1;
@@ -273,21 +334,22 @@ function render_data() {
         if (i < data.length) {
             if (data[i].status === "1") {
                 repairClass = 'text-success';
-                repairText = 'ซ่อมแล้ว';
+                repairText = 'success';
             } else {
-                repairClass = 'text-danger';
-                repairText = 'ไม่ซ่อม';
+                repairClass = 'text-warning';
+                repairText = 'waiting';
             }
             html += ` <tr>
-                <td class='text-center' style = 'font-size:14px'>${data[i].id}</td>
-                <td class='text-center' style = 'font-size:14px'>${data[i].firstname}   ${data[i].lastname}</td>
-                <td class='text-center' style = 'font-size:14px'>${data[i].telephone}</td>
-                <td class='' style = 'font-size:14px'>${data[i].detail}</td>   
-                <td class='text-center ${repairClass}' style='font-size:14px'>${repairText}</td>
-                <td class='text-center' style = 'font-size:14px'><button class='btn btn-sm btn-success btn-update' data-id = '${data[i].id}'><i class="fa-solid fa-check"></i></button></td> 
-                <td class='text-center' style = 'font-size:14px'><buttom class='btn btn-sm btn-danger'><i class="fa-solid fa-x"></i></buttom></td> 
-                </tr>
-        `;
+            <td class='text-center' style = 'font-size:14px'>${i + 1}</td>
+            <td class='text-center' style = 'font-size:14px'>${data[i].firstname}   ${data[i].lastname}</td>
+            <td class='text-center' style = 'font-size:14px'>${data[i].telephone}</td>
+            <td class='' style = 'font-size:14px'>${data[i].detail}</td>  
+            <td class='' style = 'font-size:14px'>${data[i].date}</td>   
+            <td class='text-center ${repairClass}' style='font-size:14px' id='status' data-id = '${data[i].id}'>${repairText}</td>
+            <td class='text-center' style = 'font-size:14px'><button class='btn btn-sm btn-success btn-update' data-id = '${data[i].id}'><i class="fa-solid fa-check"></i></button></td> 
+            <td class='text-center' style = 'font-size:14px'><buttom class='btn btn-sm btn-danger'><i class="fa-solid fa-x"></i></buttom></td> 
+            </tr>
+    `;
         }
         $("#response").html(html);
         // ceil ปัดเศษ ในกรณีหารกันแล้วมีเลขทศนิยม
@@ -339,9 +401,15 @@ function data_table() {
                     detail: item.mainternace_detail,
                     status: item.status,
                     telephone: item.telephone,
+                    date: item.date.split(" ")[0] 
                 };
             });
             render_data();
         },
     });
 }
+
+
+
+
+

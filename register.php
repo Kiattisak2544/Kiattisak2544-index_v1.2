@@ -93,6 +93,7 @@
                                     <label for="username" class="headders-1">ชื่อผู้ใช้</label>
                                     <input type="text" class="form-control " id="username" name="username"
                                         autocomplete="off">
+                                        <span class="text text-danger" id ="username_alert" style="display : none; font-size:12px"></span>
                                 </div>
                                 <div class="col-md-12">
                                     <label for="password" class="headders-1">รหัสผ่าน</label>
