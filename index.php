@@ -24,6 +24,7 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert2/11.16.1/sweetalert2.min.js" integrity="sha512-LGHBR+kJ5jZSIzhhdfytPoEHzgaYuTRifq9g5l6ja6/k9NAOsAi5dQh4zQF6JIRB8cAYxTRedERUF+97/KuivQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
+
 </head>
 
 <body class="bg-color">
@@ -90,7 +91,7 @@
                 data: JSON.stringify(formData),
                 contentType: 'application/json',
                 success: function(res) {
-                    if (res.success === true) {
+                    if (res.success === true && res.User_status == "Technician") {
                         Swal.fire({
                             title: "Login",
                             icon: "success",
@@ -100,7 +101,29 @@
                         setTimeout(() => {
                             window.location.href = "link/home";
                         }, 2000);
-                    } else {
+                    }else if(res.success === true && res.User_status == "Admin"){
+                             Swal.fire({
+                            title: "Login",
+                            icon: "success",
+                            text : res.message,
+                            draggable: true
+                        });
+                        setTimeout(() => {
+                            window.location.href = "Admin/home";
+                        }, 2000);
+                    }
+                    else if(res.success === true && res.User_status == "Sale"){
+                             Swal.fire({
+                            title: "Login",
+                            icon: "success",
+                            text : res.message,
+                            draggable: true
+                        });
+                        setTimeout(() => {
+                            window.location.href = "Sale/home";
+                        }, 2000);
+                    }
+                    else {
                         Swal.fire({
                             title: "Login",
                             icon: "error",

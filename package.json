@@ -1,26 +1,27 @@
 {
   "name": "index_v1.2",
   "version": "1.0.0",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
   "description": "\"# system_repair\"",
-  "dependencies": {
-    "bootstrap": "^5.3.3",
-    "chart.js": "^4.4.8",
-    "express": "^4.21.2",
-    "thai-data": "^2.0.1"
+  "keywords": [],
+  "homepage": "https://github.com/Kiattisak2544/index_v1.2#readme",
+  "bugs": {
+    "url": "https://github.com/Kiattisak2544/index_v1.2/issues"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Kiattisak2544/index_v1.2.git"
   },
-  "bugs": {
-    "url": "https://github.com/Kiattisak2544/index_v1.2/issues"
+  "license": "ISC",
+  "author": "",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "homepage": "https://github.com/Kiattisak2544/index_v1.2#readme"
+  "dependencies": {
+    "bootstrap": "^5.3.8",
+    "chart.js": "^4.5.1",
+    "express": "^4.21.2",
+    "thai-data": "^2.0.1"
+  }
 }

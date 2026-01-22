@@ -6,13 +6,14 @@
         include_once('../config/class.php');
 
         if (isset($_SERVER["REQUEST_METHOD"]) == "POST") {
-            $firstname = trim($data['firstname']);
-            $lastname = trim($data['lastname'] );
-            $telnumber = trim($data['telnumber'] );
-            $district  = trim($data['district']);
-            $amphoe = trim($data['amphoe']);
-            $province = trim($data['province']);
-            $zipcode  = trim($data['zipcode']);
+            // $firstname = trim($data['firstname']);
+            // $lastname = trim($data['lastname'] );
+            // $telnumber = trim($data['telnumber'] );
+            // $district  = trim($data['district']);
+            // $amphoe = trim($data['amphoe']);
+            // $province = trim($data['province']);
+            // $zipcode  = trim($data['zipcode']);
+            $member_code = trim($data['member_code']);
             $es1 = trim($data['es1']);
             $es2 = trim($data['es2']);
             $es3 = trim($data ['es3']);
@@ -42,7 +43,7 @@
             // print_r($_POST)
 
            
-            if (empty($firstname) || empty($lastname) || empty($telnumber) || empty($district) || empty($amphoe) || empty($province)) {
+            if (empty($member_code)) {
                 echo json_encode([
                     "message" => "กรุณากรอกข้อมูลให้ครบถ้วน",
                     "status" => 400,
@@ -52,20 +53,16 @@
                 exit;
             }
             $web = new websystem();
-            $web2 = new websystem();
+            // $web2 = new websystem();
             
 
             try{    
                     // เรียกใช้ฟังก์ชัน submit_repair
-                    $web->submit_repair($firstname, $lastname, $telnumber, $district, $amphoe, $province, $zipcode, $mainternace_detail, $status);
+                   
                     // เรียกใช้ฟังก์ชัน system_repair2
-                    $web2->system_repair2($es1, $es2, $es3, $es4, $es5, $es6, $es7, $es8, $es9, $es10, $es11, $es12, $es13, $es14, $es15, $other1, $product_condition, $detail, $Important, $Computer_type, $maintenance_type, $service,$technician);
+                    $web->system_repair($member_code, $es1, $es2, $es3, $es4, $es5, $es6, $es7, $es8, $es9, $es10, $es11, $es12, $es13, $es14, $es15, $other1, $product_condition, $detail, $Important, $Computer_type, $maintenance_type, $service,$technician,$status, $mainternace_detail);
 
-                    echo json_encode([
-                        "message" => "บันทึกข้อมูลสำเร็จ",
-                        "status" => 200,
-                        "success" => true
-                    ], JSON_UNESCAPED_UNICODE);
+                    
 
             }catch (Exception $e){
 

@@ -268,17 +268,17 @@
                             };
                             var formattedDate = date.toLocaleDateString('th-TH', options)
                                 .replace(/\//g, '-');
-                            $('#firstname').text(data.firstname);
+                            $('#firstname').text(data.first_customer);
                             $('#firstname1').text(data.firstname);
-                            $('#lastname').text(data.lastname);
-                            $('#tel-phone').text(data.telephone);
-                            $('#district').text(data.district);
-                            $('#amphoe').text(data.amphoe);
-                            $('#province').text(data.province);
-                            $('#zipcode').text(data.zip_code);
+                            $('#lastname').text(data.last_customer);
+                            $('#tel-phone').text(data.tel_customer);
+                            $('#district').text(data.district_customer);
+                            $('#amphoe').text(data.amphoe_customer);
+                            $('#province').text(data.province_customer);
+                            $('#zipcode').text(data.zip_code_customer);
                             $('#date').text(formattedDate);
                             $('#date-main').text(formattedDate);
-                            $('#id').text(data.id_broken);
+                            $('#id').text(data.member_code);
                             $('#technician').text(data.technician);
                             $('#dates').text(formattedDate);
 

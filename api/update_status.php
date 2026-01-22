@@ -20,6 +20,7 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
     $status = true;
     $web = new websystem();
     $result = $web->update_status($id, $status);
+    
     // $fetch_data = $web->GetuserInfo($id);
 
     

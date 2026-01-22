@@ -1,43 +1,45 @@
-$(document).on("click", ".btn-update", function() {
-    // ดึง ID จาก data-id ของปุ่มที่คลิก
-    const id = $(this).data("id");
-    // ส่งคำขอ AJAX เพื่ออัปเดตสถานะ
-    $.ajax({
-        url: "/index_v1.2/api/update_status.php", // URL สำหรับอัปเดต
-        type: "POST",
-        dataType: "JSON",
-        data: JSON.stringify({
-            id: id
-        }), // ส่ง ID ไปที่เซิร์ฟเวอร์
-        contentType: "application/json",
-        success: function(res) {
-            var html ='';
-            var text ='';
-            var repairClass = '';
+// $(document).on("click", ".btn-update", function() {
+//     // ดึง ID จาก data-id ของปุ่มที่คลิก
+//     const id = $(this).data("id");
+//     // ส่งคำขอ AJAX เพื่ออัปเดตสถานะ
+//     $.ajax({
+//         url: "/index_v1.2/api/update_status.php", // URL สำหรับอัปเดต
+//         type: "POST",
+//         dataType: "JSON",
+//         data: JSON.stringify({
+//             id: id
+//         }), // ส่ง ID ไปที่เซิร์ฟเวอร์
+//         contentType: "application/json",
+//         success: function(res) {
+//             console.log(res);
+//             var html ='';
+//             var repairText = '';
+//             var repairClass = '';
             
-            if (res.success == true) {
+//             if (res.success == true) {
                 
-                // แสดงข้อความแจ้งเตือน หรืออัปเดต UI
-                repairText = "ซ่อมแล้ว";
-                repairClass = 'text-success';
-                html = `<td class='text-center ${repairClass}' style='font-size:14px' data-id='${res.id}' id='status'>${repairText}</td>`;
+//                 // แสดงข้อความแจ้งเตือน หรืออัปเดต UI
+//                 repairText = "ซ่อมแล้ว";
+//                 repairClass = 'text-success';
+//                 html = `<td class='text-center ${repairClass}' style='font-size:14px' data-id='${res.id}' id='status'>${repairText}</td>`;
 
-                location.reload(); 
-                alert("อัปเดตสถานะเรียบร้อยแล้ว!");
-                // console.log("อัปเดตสถานะเรียบร้อยแล้ว!");
-                // window.location.reload();
+//                 // location.reload(); 
+//                 alert("อัปเดตสถานะเรียบร้อยแล้ว!");
+//                 // console.log("อัปเดตสถานะเรียบร้อยแล้ว!");
+//                 // window.location.reload();
                
-            }else {
-                   location.reload(); 
-                   alert( res.message);
-                // console.log(res.message);
-            }
-        },
-        error: function() {
-             alert("เกิดข้อผิดพลาดขณะส่งคำขอ!");
-        },
-    });
-});
+//             }else {
+//                 //    location.reload(); 
+//                 //    alert( res.message);
+//                  console.log(res.message);
+//             }
+//         },
+//         error: function() {
+//               alert(res.message);
+//              console.error("เกิดข้อผิดพลาดขณะส่งคำขอ!");
+//         },
+//     });
+// });
 
 // Page ปัจจุบัน
 var page = 1;
@@ -59,13 +61,17 @@ function render_data() {
                 repairText = 'ไม่ซ่อม';
             }
             html += ` <tr>
-            <td class='text-center' style = 'font-size:14px'>${i + 1}</td>
-            <td class='text-center' style = 'font-size:14px'>${data[i].firstname}   ${data[i].lastname}</td>
-            <td class='text-center' style = 'font-size:14px'>${data[i].telephone}</td>
-            <td class='' style = 'font-size:14px'>${data[i].detail}</td>   
-            <td class='text-center ${repairClass}' style='font-size:14px' id='status' data-id = '${data[i].id}'>${repairText}</td>
-            <td class='text-center' style = 'font-size:14px'><button class='btn btn-sm btn-success btn-update' data-id = '${data[i].id}'><i class="fa-solid fa-check"></i></button></td> 
-            <td class='text-center' style = 'font-size:14px'><buttom class='btn btn-sm btn-danger'><i class="fa-solid fa-x"></i></buttom></td> 
+            <td class='text-center' style = 'font-size:14px!important'>${i + 1}</td>
+                <td class='text-center' style = 'font-size:14px!important'>${data[i].first_customer}   ${data[i].last_customer}</td>
+                <td class='text-center' style = 'font-size:14px!important'>${data[i].tel_customer.replace(/(\d{3})(\d{3})(\d{4})/, "$1-$2-$3")}</td>
+                <td class='text-center' style = 'font-size:14px!important'>${data[i].detail}</td>
+                <td class='text-center' style = 'font-size:14px!important'>${data[i].date}</td>
+                 <td class='text-center' style = 'font-size:14px!important'>${data[i].technician}</td>        
+                <td class='text-center ${repairClass}' style='font-size:14px' id='status' data-id = '${data[i].id}'>${repairText}</td>
+                <td class='text-center' style = 'font-size:14px'><button class='btn btn-sm btn-success btn-update' data-id = '${data[i].id}'><i class="fa-solid fa-check"></i></button></td> 
+                <td class='text-center' style = 'font-size:14px'><buttom class='btn btn-sm btn-danger'><i class="fa-solid fa-x"></i></buttom></td> 
+                <td class='text-center text-content-table' style = 'font-size:14px'><buttom class='btn btn-sm btn-primary btn-view' id = 'btn-view'  data-id = '${data[i].id
+                }'><i class="fa-regular fa-eye"></i></buttom></td> 
             </tr>
     `;
         }
@@ -105,6 +111,7 @@ function current_page(cupage) {
     render_data();
 }
 
+
 function data_table() {
     $.ajax({
         url: "/index_v1.2/api/fecth_table.php",
@@ -113,12 +120,15 @@ function data_table() {
         success: function (res) {
             data = res.map(function (item) {
                 return {
-                    id: item.id_broken,
-                    firstname: item.firstname,
-                    lastname: item.lastname,
-                    detail: item.mainternace_detail,
-                    status: item.status,
-                    telephone: item.telephone,
+                    id: item.id_es,
+                     member: item.member_code,
+                     firstname: item.first_customer,
+                     lastname: item.last_customer,
+                     detail: item.mainternace_detail,
+                     date: item.date ? item.date.split(" ")[0] : "",
+                     technician:item.technician,
+                     status: item.status,
+                     tel_customer: item.tel_customer,
                 };
             });
             render_data();

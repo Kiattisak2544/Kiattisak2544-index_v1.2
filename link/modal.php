@@ -41,21 +41,28 @@ if(!isset($_SESSION['id_user'])){
                         <p class="position-absolute top-1 mt-1 mx-4 text-cusstomer">ข้อมูลลูกค้า</p>
                         <div class="col-md-12 p-1 border rounded border-1 mt-3 ">
                             <div class="row g-1 p-3">
-                                <div class="col-12 col-md-4">
+                                <div class="col-12 col-md-3">
+                                    <label for="firstname" class="col-form-label col-form-label-sm">รหัสสมาชิก</label>
+                                    <input type="text" class="form-control form-control-sm" id="members_code"
+                                        autocomplete="off">
+                                </div>
+                                <div class="col-12 col-md-3">
                                     <label for="firstname" class="col-form-label col-form-label-sm">ชื่อ</label>
                                     <input type="text" class="form-control form-control-sm" id="firstname"
                                         autocomplete="off">
                                 </div>
-                                <div class="col-12 col-md-4">
+                                <div class="col-12 col-md-3">
                                     <label for="lastname" class="col-form-label col-form-label-sm">นามสกุล</label>
                                     <input type="text" class="form-control form-control-sm" id="lastname"
                                         autocomplete="off">
                                 </div>
-                                <div class="col-12 col-md-4">
+                                <div class="col-12 col-md-3">
                                     <label for="telnumber" class="col-form-label col-form-label-sm">เบอร์โทร</label>
                                     <input type="text" class="form-control form-control-sm" id="telnumber"
                                         autocomplete="off">
-                                    <label id="tel-alert" style="font-size:14px!important"></label>
+                                    <label id="tel-alert" style="font-size:12px!important"></label>
+                                    
+
                                 </div>
                                 <div class="col-12 col-md-3">
                                     <label for="district" class="col-form-label col-form-label-sm">ตำบล</label>
@@ -257,10 +264,9 @@ if(!isset($_SESSION['id_user'])){
                                     <div class="col-12 col-md-4">
                                         <label for="mainternace_detail"
                                             class="col-form-label col-form-label-sm">ประเภทของเครื่อง</label>
-                                        <select class="form-select form-select-sm" id="Computer_type" aria-label="Small select example">
+                                        <select class="form-select form-select-sm" id="com_type" aria-label="Small select example">
                                             <option selected>กรุณาเลือกประเภทเครื่อง...</option>
-                                            <option value="computer_out">เครื่องนอก</option>
-                                            <option value="computer_in-jib">เครื่องของ JIB Computer </option>
+                                            <!-- <option id="com_option"></option> -->
                                         </select>
                                     </div>
                                     <div class="col-12 col-md-4">
@@ -277,12 +283,8 @@ if(!isset($_SESSION['id_user'])){
                                         <label for="mainternace_detail"
                                             class="col-form-label col-form-label-sm">อัตตราค่าบริการ</label>
                                         <select class="form-select form-select-sm" id="service" aria-label="Small select example">
-                                            <?php 
-                                                    foreach($fecth as $row){
-
-                                                ?>
-                                            <option value="<?=$row['service_price'];?>" id="brand"><?=$row['Service_name'];?>
-                                            <?php } ?>
+                                            <option value="0" class="m-2">กรุณาเลือกรายการ...</option>
+                                            <option id="service_option">
                                         </select>
                                     </div>
                                 </div>

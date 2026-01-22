@@ -1,10 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@100..900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk&display=swap');
+
 *{
     padding: 0;
     margin: 0;
     box-sizing: border-box;
+    font-size: 16px!important;
+}
+.message{
+    font-family: "Noto Sans Thai", sans-serif!important;
     font-size: 16px!important;
 }
 .btn-register{
@@ -166,7 +171,10 @@
 .fs-con{
     font-size: 25px!important;
 }
-
+.label-input ,.input-custom{
+     font-family: "Noto Sans Thai", sans-serif!important;
+     font-size: 16px;
+}
 .text-content{
     font-family: "Noto Sans Thai", sans-serif!important;
     font-size: 16px!important;
@@ -270,3 +278,4 @@
     z-index: 2;
     position: relative;
 }
+

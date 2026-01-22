@@ -15,7 +15,8 @@
             
             if($status == 0){
                 $fetch_data = new websystem();
-                $reult = $fetch_data-> data_repair_pass($status);
+                $reult = $fetch_data-> data_repair_nopass($status);
+                echo $reult;
 
 
             }else{

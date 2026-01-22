@@ -10,36 +10,44 @@
         </a>
 
         <a class="navbar-brand text-sm-center fs-5" href="#">DASHBORD</a>
-        <div class="d-flex justify-content-between gap-5">
-            <a href="#" class="text-decoration-none position-relative">
+        <div class="d-flex justify-content-between gap-5 dropdown">
+            <a href="#" class="text-decoration-none position-relative " role="button" id="popup-btn"
+                data-bs-toggle="dropdown" aria-expanded="false">
                 <i class="fa-solid fa-bell fs-4"></i>
                 <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
                     3
                     <span class="visually-hidden">unread messages</span>
                 </span>
             </a>
+            <ul class="dropdown-menu left-1 p-1" aria-labelledby="popup-btn">
+                <li><a class="dropdown-item" href="#">Action</a></li>
+                <li><a class="dropdown-item" href="#">Another action</a></li>
+                <li><a class="dropdown-item" href="#">Something else here</a></li>
+            </ul>
 
             <div class="dropdown ">
-                <a href="#" class="dropdown-toggle link-underline link-underline-opacity-0 " id="dropdownMenuButton1"
+                <a href="#" class=" link-underline link-underline-opacity-0 " id="dropdownMenuButton1"
                     data-bs-toggle="dropdown" aria-expanded="false">
                     <i class='fa-solid fa-user fs-4'></i>
                 </a>
                 <ul class="dropdown-menu col-md-z-3 " aria-labelledby="dropdownMenuButton1"
                     style="right: 0; left: auto;">
-                    <li>
-                        <a class="dropdown-item p-2" href="#"><?=$Data_user['Firstname_repair'];?>
+                    <li class="shadow-sm p-2 nav-link rounded">
+                        <a class="dropdown-item " href="#"><?=$Data_user['Firstname_repair'];?>
                             <?=$Data_user['Lastname_repair'];?>
                         </a>
                     </li>
-                    <li>
+                    <li class="nav-link">
                         <a class="dropdown-item" href="#">
                             <hr>
                         </a>
                     </li>
-                    <li><a class="dropdown-item" href="#"><i
+                    <li class="nav-link">
+                        <a class="dropdown-item" href="#"><i
                                 class="fa-solid fa-gear rounded-circle bg-secondary text-light bg-gradient p-2"></i>
                             ตั้งค่า</a></li>
-                    <li><a class="dropdown-item" href="../logout.php"><i
+                    <li class="nav-link">
+                        <a class="dropdown-item" href="../logout.php"><i
                                 class="fa-solid fa-right-to-bracket rounded-circle bg-secondary text-light bg-gradient p-2"></i>
                             ออกจากระบบ</a></li>
                 </ul>

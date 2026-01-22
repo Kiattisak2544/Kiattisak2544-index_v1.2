@@ -5,6 +5,7 @@
         include_once('../config/class.php');
 
         if($_SERVER["REQUEST_METHOD"] == "POST"){
+           
             $fetch_data = new websystem();
             $result = $fetch_data->Chart_js();
         
